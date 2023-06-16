@@ -1,0 +1,11 @@
+include sigmajs_for_dash/sigmajs_for_dash.min.js
+include sigmajs_for_dash/sigmajs_for_dash.min.js.map
+include sigmajs_for_dash/async-*.js
+include sigmajs_for_dash/async-*.js.map
+include sigmajs_for_dash/*-shared.js
+include sigmajs_for_dash/*-shared.js.map
+include sigmajs_for_dash/metadata.json
+include sigmajs_for_dash/package-info.json
+include README.md
+include LICENSE
+include package.json

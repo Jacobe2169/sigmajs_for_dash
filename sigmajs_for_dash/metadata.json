@@ -1,0 +1,66 @@
+{
+  "src/lib/components/SigmaJSComponent.react.js": {
+    "description": "Component to use SigmaJS renderer in a React/Dash application",
+    "displayName": "SigmaJSComponent",
+    "methods": [],
+    "props": {
+      "graph_data": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "Dict/JSON that contains graph definition. See https://graphology.github.io/serialization.html#format"
+      },
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID used to identify this component in Dash callbacks."
+      },
+      "className": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The class(es) used to identify this component."
+      },
+      "style": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "Inline Style",
+        "defaultValue": {
+          "value": "{}",
+          "computed": false
+        }
+      },
+      "label": {
+        "type": {
+          "name": "string"
+        },
+        "required": true,
+        "description": "Label"
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
+      },
+      "settings": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "Settings",
+        "defaultValue": {
+          "value": "{allowInvalidContainer :true}",
+          "computed": false
+        }
+      }
+    }
+  }
+}
