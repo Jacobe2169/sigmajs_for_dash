@@ -54,7 +54,7 @@ if __name__ == '__main__':
 
 SigmaJS only accepts network data in JSON format. Therefore, there are two options: 
 
- 1. Create a Python dictionary following the JSON format described [here](https://graphology.github.io/serialization.html#format). (Check arti )
+ 1. Create a Python dictionary following the JSON format described [here](https://graphology.github.io/serialization.html#format).
 
 ```python
 {
@@ -62,8 +62,8 @@ SigmaJS only accepts network data in JSON format. Therefore, there are two optio
     "name": "place holder"
   },
   "options": {
-    "multi": false,
-    "allowSelfLoops": true,
+    "multi": False,
+    "allowSelfLoops": True,
     "type": "directed"
   },
   "nodes": [ # Nodes declaration
