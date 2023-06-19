@@ -1,6 +1,11 @@
-# SigmaJS for Dash
 
-SigmaJS for Dash is a component that allows to bring SigmaJS graph renderer to your Dash app.
+<h1 float="left">
+<img src="documentation/logo-sigma-ruby.svg" style="width:45px;margin-right:5px" /> SigmaJS for Dash<img src="documentation/plotly_logo_dark.png" style="width:140px" /> 
+  
+</h1>
+
+
+SigmaJS for Dash is a component that allows to bring SigmaJS network renderer to your Dash app.
 
 
 ## Setup
