@@ -11,7 +11,8 @@ Component to use SigmaJS renderer in a React/Dash application
 
 \usage{
 ''SigmaJSComponent(id=NULL, className=NULL, graph_data=NULL, label=NULL,
-settings=NULL, style=NULL)
+layout=NULL, layoutNumberOfIteration=NULL,
+layoutSettings=NULL, settings=NULL, style=NULL)
 }
 
 \arguments{
@@ -22,6 +23,12 @@ settings=NULL, style=NULL)
 \item{graph_data}{Named list. Dict/JSON that contains graph definition. See https://graphology.github.io/serialization.html#format}
 
 \item{label}{Character. Label}
+
+\item{layout}{Character. Layout used (if empty )}
+
+\item{layoutNumberOfIteration}{Numeric. Number of iterations for the layout algorithm}
+
+\item{layoutSettings}{Named list. Settings dict that indicate layout settings}
 
 \item{settings}{Named list. Settings}
 

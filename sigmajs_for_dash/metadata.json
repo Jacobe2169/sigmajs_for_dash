@@ -2,7 +2,107 @@
   "src/lib/components/SigmaJSComponent.react.js": {
     "description": "Component to use SigmaJS renderer in a React/Dash application",
     "displayName": "SigmaJSComponent",
-    "methods": [],
+    "methods": [
+      {
+        "name": "layout",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "updateLayout",
+        "docblock": "Update nodes positions given an object that associated each node with a position {x:<number>,y:<number>}\r\n@param {object} positions",
+        "modifiers": [],
+        "params": [
+          {
+            "name": "positions",
+            "description": null,
+            "type": {
+              "name": "object"
+            },
+            "optional": false
+          }
+        ],
+        "returns": null,
+        "description": "Update nodes positions given an object that associated each node with a position {x:<number>,y:<number>}"
+      },
+      {
+        "name": "setSearchQuery",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "query",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "setHoveredNode",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "data",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "enterNode",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "node",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "leaveNode",
+        "docblock": null,
+        "modifiers": [],
+        "params": [],
+        "returns": null
+      },
+      {
+        "name": "nodeReducer",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "node",
+            "type": null
+          },
+          {
+            "name": "data",
+            "type": null
+          }
+        ],
+        "returns": null
+      },
+      {
+        "name": "edgeReducer",
+        "docblock": null,
+        "modifiers": [],
+        "params": [
+          {
+            "name": "edge",
+            "type": null
+          },
+          {
+            "name": "data",
+            "type": null
+          }
+        ],
+        "returns": null
+      }
+    ],
     "props": {
       "graph_data": {
         "type": {
@@ -57,7 +157,40 @@
         "required": false,
         "description": "Settings",
         "defaultValue": {
-          "value": "{allowInvalidContainer :true}",
+          "value": "{ allowInvalidContainer: true }",
+          "computed": false
+        }
+      },
+      "layout": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "Layout used (if empty )",
+        "defaultValue": {
+          "value": "\"forceAtlas2\"",
+          "computed": false
+        }
+      },
+      "layoutSettings": {
+        "type": {
+          "name": "object"
+        },
+        "required": false,
+        "description": "Settings dict that indicate layout settings",
+        "defaultValue": {
+          "value": "{}",
+          "computed": false
+        }
+      },
+      "layoutNumberOfIteration": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "Number of iterations for the layout algorithm",
+        "defaultValue": {
+          "value": "100",
           "computed": false
         }
       }

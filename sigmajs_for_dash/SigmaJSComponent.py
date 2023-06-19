@@ -22,7 +22,16 @@ Keyword arguments:
 - label (string; required):
     Label.
 
-- settings (dict; default {allowInvalidContainer :True}):
+- layout (string; default "forceAtlas2"):
+    Layout used (if empty ).
+
+- layoutNumberOfIteration (number; default 100):
+    Number of iterations for the layout algorithm.
+
+- layoutSettings (dict; optional):
+    Settings dict that indicate layout settings.
+
+- settings (dict; default { allowInvalidContainer: True }):
     Settings.
 
 - style (dict; optional):
@@ -32,10 +41,10 @@ Keyword arguments:
     _namespace = 'sigmajs_for_dash'
     _type = 'SigmaJSComponent'
     @_explicitize_args
-    def __init__(self, graph_data=Component.UNDEFINED, id=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, label=Component.REQUIRED, settings=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'className', 'graph_data', 'label', 'settings', 'style']
+    def __init__(self, graph_data=Component.UNDEFINED, id=Component.UNDEFINED, className=Component.UNDEFINED, style=Component.UNDEFINED, label=Component.REQUIRED, settings=Component.UNDEFINED, layout=Component.UNDEFINED, layoutSettings=Component.UNDEFINED, layoutNumberOfIteration=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'className', 'graph_data', 'label', 'layout', 'layoutNumberOfIteration', 'layoutSettings', 'settings', 'style']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'className', 'graph_data', 'label', 'settings', 'style']
+        self.available_properties = ['id', 'className', 'graph_data', 'label', 'layout', 'layoutNumberOfIteration', 'layoutSettings', 'settings', 'style']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()
