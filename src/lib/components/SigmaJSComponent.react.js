@@ -80,7 +80,7 @@ export default class SigmaJSComponent extends Component {
         for (const { node } of this.graph.nodeEntries()) {
             // Check if position for current node exists
             if (!Object.hasOwnProperty.call(positions[node], "x") || !Object.hasOwnProperty.call(positions[node], "y")) {
-                throw new Error(`In postion dict given, ${node} is not associated with a x or y value`)
+                throw new Error(`In position dict given, ${node} is not associated with a x or y value`)
             }
             // Update node attributes in the graph instantiated
             this.graph.updateNodeAttribute(node, "x", n => positions[node].x);

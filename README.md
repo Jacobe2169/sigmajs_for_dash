@@ -20,16 +20,16 @@ A demo is available in the `usage.py` script. Just run the command :
 python usage.py
 ```
 
-Then, you should see the following graph : 
+The application should render a network like the animated gif below.
 
-![Screenshot of the app in usage.py](documentation/usage_example.png)
+![Screenshot of the app in usage.py](documentation/animated_component.gif)
 
 ### Use the component
 
-First, let's setup a basic Dash application with the following script.
+Let's start with a simple Dash application. We'll use the following script.
 
 ```python
-import sigmajs_for_dash
+from sigmajs_for_dash import SigmaJSComponent
 from sigmajs_for_dash.utils import networkx2Sigma
 
 from dash import Dash, html
@@ -40,34 +40,74 @@ app = Dash(__name__)
 
 
 app.layout = html.Div([
-    html.H1("Hello")
+    html.H1("Hello World")
 ])
 
 if __name__ == '__main__':
     app.run_server(debug=True)
 ```
 
-SigmaJs takes only network data using the JSON format. Therefore, there are two choices : create a python dictionnary following the JSON format described [here]([https://](https://graphology.github.io/serialization.html#format)) or use the `networkx` library and its `networkx.Graph` object. Concerning the latter, the `networkx2Sigma()` method will transform the networkx Graph into a dict usable for SigmaJS.
+SigmaJS only accepts network data in JSON format. Therefore, there are two options: 
+
+ 1. Create a Python dictionary following the JSON format described [here](https://graphology.github.io/serialization.html#format). (Check arti )
+
+```python
+{
+  "attributes": { # Graph attributes
+    "name": "place holder"
+  },
+  "options": {
+    "multi": false,
+    "allowSelfLoops": true,
+    "type": "directed"
+  },
+  "nodes": [ # Nodes declarations
+    {
+      "key": "53", # node id
+      "attributes": {
+        "label": "Changement Climatique", # node label (displayed on screen)
+        "x": 639.0149, # node x position
+        "y": -703.6634, # node y position
+        "size": 99.99999, # node size (displayed on screen)
+        "color": "#66ff66", # node color (displayed on screen)
+        # Check SigmaJS's documentation for other graphical customization options 
+      }
+    },
+    #...
+    ],
+   "edges":[ # Edges declarations
+    {
+      "key": "0", # edge id
+      "source": "0", # edge source
+      "target": "1", # edge target
+      "attributes": {# edge's attributes
+        "weight": 1.0
+      }
+    },
+    //...
+   ]
+```
+
+ 2. Use the [`networkx` ](https://networkx.org/) library and its `networkx.Graph` object. The latter requires the `networkx2Sigma()` function to convert the networkx graph into a SigmaJS usable dictionary.
 
 ```python
 # Using networkx 
 G = nx.karate_club_graph()
 data = networkx2Sigma(G)
-
-# or directly from JSON, using graphology format
-data = json.load(open("artic.json",encoding="utf-8")) # File available in the repository
 ```
 
 Once your network data is ready, simply add the component in your Dash app layout :
 
 ```python
-app.layout = html.Div([
+app.layout = html.Div(
+    [
         html.H1("Hello"),
-        sigmajs_for_dash.SigmaJSComponent(
-        id='graph_container',label="graph_container",
-        graph_data=data,style={"height":"600px","width":"600px"}
-    )
-])
+        SigmaJSComponent(
+            id='graph_container',label="graph_container",
+            graph_data=data,style={"height":"600px","width":"600px"}
+        )
+    ]
+)
 ```
 
 # Acknowledgments
