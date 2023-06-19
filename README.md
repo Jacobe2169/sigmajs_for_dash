@@ -66,7 +66,7 @@ SigmaJS only accepts network data in JSON format. Therefore, there are two optio
     "allowSelfLoops": true,
     "type": "directed"
   },
-  "nodes": [ # Nodes declarations
+  "nodes": [ # Nodes declaration
     {
       "key": "53", # node id
       "attributes": {
@@ -80,12 +80,12 @@ SigmaJS only accepts network data in JSON format. Therefore, there are two optio
     },
     #...
     ],
-   "edges":[ # Edges declarations
+   "edges":[ # Edges declaration
     {
       "key": "0", # edge id
       "source": "0", # edge source
       "target": "1", # edge target
-      "attributes": {# edge's attributes
+      "attributes": {# edge attributes
         "weight": 1.0
       }
     },
