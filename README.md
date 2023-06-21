@@ -5,8 +5,15 @@
 </h1>
 
 
-SigmaJS for Dash is a component that allows to bring SigmaJS network renderer to your Dash app.
+SigmaJS for Dash is a component that bring SigmaJS network fast renderer to your Dash app.
 
+
+**Available features :**
+
+ * Highlight node neighbors by clicking it
+ * Zoom on a node or specific coordinates
+ * Node searching features
+ * Works with networkx graph
 
 ## Setup
 
