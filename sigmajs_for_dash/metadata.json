@@ -140,8 +140,12 @@
         "type": {
           "name": "string"
         },
-        "required": true,
-        "description": "Label"
+        "required": false,
+        "description": "Label",
+        "defaultValue": {
+          "value": "generateUID()",
+          "computed": true
+        }
       },
       "setProps": {
         "type": {
@@ -166,7 +170,7 @@
           "name": "string"
         },
         "required": false,
-        "description": "Layout used (if empty )",
+        "description": "Layout used \r\n - if empty will used ForceAltlas2\r\n - if empty string will used existing coordinates)",
         "defaultValue": {
           "value": "\"forceAtlas2\"",
           "computed": false
@@ -192,6 +196,48 @@
         "defaultValue": {
           "value": "100",
           "computed": false
+        }
+      },
+      "nodeFocused": {
+        "type": {
+          "name": "union",
+          "value": [
+            {
+              "name": "string"
+            },
+            {
+              "name": "number"
+            }
+          ]
+        },
+        "required": false,
+        "description": "Focus on a specific node : show only node and its neighbors",
+        "defaultValue": {
+          "value": "undefined",
+          "computed": true
+        }
+      },
+      "zoom": {
+        "type": {
+          "name": "shape",
+          "value": {
+            "duration": {
+              "name": "number",
+              "description": "Duration of the zoom animation",
+              "required": false
+            },
+            "factor": {
+              "name": "number",
+              "description": "Zoom intensity",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": "Zoom control",
+        "defaultValue": {
+          "value": "undefined",
+          "computed": true
         }
       }
     }

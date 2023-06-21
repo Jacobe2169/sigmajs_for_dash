@@ -7,7 +7,15 @@ import forceAtlas2 from 'graphology-layout-forceatlas2';
 import { Coordinates, EdgeDisplayData, NodeDisplayData } from "sigma/types";
 
 
-
+function generateUID() {
+    // I generate the UID from two parts here 
+    // to ensure the random number provide enough bits.
+    var firstPart = (Math.random() * 46656) | 0;
+    var secondPart = (Math.random() * 46656) | 0;
+    firstPart = ("000" + firstPart.toString(36)).slice(-3);
+    secondPart = ("000" + secondPart.toString(36)).slice(-3);
+    return firstPart + secondPart;
+}
 
 
 
@@ -51,10 +59,12 @@ export default class SigmaJSComponent extends Component {
             hoverNode: undefined,
             searchQuery: "",
 
-            selectedNode: "",
+            selectedNode: undefined,
             suggestions: undefined,
             hoveredNeighbor: undefined
         }
+
+        
     }
 
 
@@ -131,6 +141,7 @@ export default class SigmaJSComponent extends Component {
         this.renderer.refresh();
     }
 
+
     setHoveredNode(data) {
         const {node} = data;
         if (node) {
@@ -188,13 +199,14 @@ export default class SigmaJSComponent extends Component {
         return res;
     }
 
-
-
     /**
      * Start the graph rendering
      */
     componentDidMount() {
-        const { settings } = this.props;
+        const { settings, nodeFocused,zoom } = this.props;
+
+        
+
         this.renderer = new Sigma(this.graph,
             this.containerRef.current,
             { ...settings, allowInvalidContainer: true }
@@ -215,12 +227,31 @@ export default class SigmaJSComponent extends Component {
             .nodes()
             .map((node) => `<option value="${this.graph.getNodeAttribute(node, "label")}"></option>`)
             .join("\n");
+
         this.searchInputRef.current.addEventListener("input", () => {
             this.setSearchQuery(this.searchInputRef.current.value || "");
         });
         this.searchInputRef.current.addEventListener("blur", () => {
             this.setSearchQuery("");
         });
+
+        if (nodeFocused){
+            // this.setHoveredNode({node : nodeFocused });
+            this.enterNode({node : nodeFocused });
+            const nodePosition = this.renderer.getNodeDisplayData(nodeFocused);
+                this.renderer.getCamera().animate(nodePosition, {
+                    duration: 500,
+                });
+        }
+        if (zoom){
+            this.renderer.getCamera().animatedZoom(zoom)
+        }
+
+        
+    }
+    componentDidUpdate(){
+        // To make focus on node work
+        this.renderer.refresh()
     }
 
     render() {
@@ -236,7 +267,6 @@ export default class SigmaJSComponent extends Component {
                     </div>
                 </div>
             </>
-
         )
     }
 }
@@ -246,7 +276,10 @@ SigmaJSComponent.defaultProps = {
     settings: { allowInvalidContainer: true },
     layout: "forceAtlas2",
     layoutSettings: {},
-    layoutNumberOfIteration: 100
+    layoutNumberOfIteration: 100,
+    nodeFocused: undefined,
+    zoom:undefined,
+    label:generateUID()
 };
 
 SigmaJSComponent.propTypes = {
@@ -271,7 +304,7 @@ SigmaJSComponent.propTypes = {
     /**
      * Label
      */
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
     /**
      * Dash-assigned callback that should be called to report property changes
      * to Dash, to make them available for callbacks.
@@ -283,7 +316,9 @@ SigmaJSComponent.propTypes = {
     settings: PropTypes.object,
 
     /**
-     * Layout used (if empty )
+     * Layout used 
+     *  - if empty will used ForceAltlas2
+     *  - if empty string will used existing coordinates)
      */
     layout: PropTypes.string,
 
@@ -295,5 +330,25 @@ SigmaJSComponent.propTypes = {
     /**
      * Number of iterations for the layout algorithm
      */
-    layoutNumberOfIteration: PropTypes.number
+    layoutNumberOfIteration: PropTypes.number,
+
+    /**
+     * Focus on a specific node : show only node and its neighbors
+     */
+    nodeFocused : PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
+
+    /**
+     * Zoom control
+     */
+    zoom:PropTypes.shape({
+        /**
+         * Duration of the zoom animation 
+         */
+        duration:PropTypes.number,
+        /**
+         * Zoom intensity
+         */
+        factor:PropTypes.number
+    }),
+
 };

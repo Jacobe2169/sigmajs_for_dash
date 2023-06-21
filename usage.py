@@ -11,7 +11,7 @@ app = Dash(__name__)
 # From networkx graph
 G = nx.karate_club_graph()
 for ix,node in enumerate(list(G.nodes())):
-    G.nodes[node]["label"] = str(ix) + str(np.random.randint(1,20))
+    G.nodes[node]["label"] = str(ix)
     G.nodes[node]["size"] = G.degree(node)
 
 data2 = networkx2Sigma(G)
@@ -25,12 +25,12 @@ for node_data in data["nodes"]:
     node_data["attributes"]["size"] += 5
 
 
+
 app.layout = html.Div(
   [
     html.H1("Hello World ! ",style={"fontFamily":"Arial"}),
     SigmaJSComponent(
       id='graph_container',
-      label="graph_container",
       graph_data=data,style={"height":"500px","width":"50%","float":"left"},
       settings={
         "minCameraRatio": 0.1,
@@ -42,11 +42,10 @@ app.layout = html.Div(
         "adjustSizes": True,
         "linLogMode": True
       },
-      layoutNumberOfIteration=200
+      layoutNumberOfIteration=200,nodeFocused="1",zoom={"duration":1000,"factor":10}
     ),
     SigmaJSComponent(
       id='graph_container2',
-      label="graph_container",
       graph_data=data2,style={"height":"500px","width":"50%","float":"left"},
       settings={
         "minCameraRatio": 0.1,
@@ -58,7 +57,7 @@ app.layout = html.Div(
         "adjustSizes": True,
         "linLogMode": True
       },
-      layoutNumberOfIteration=200
+      layoutNumberOfIteration=200,
     )
   ]
 )
