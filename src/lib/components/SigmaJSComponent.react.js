@@ -236,8 +236,10 @@ export default class SigmaJSComponent extends Component {
         });
 
         if (nodeFocused || (zoom && zoom.coordinates)){
-            // this.setHoveredNode({node : nodeFocused });
+
             let nodePosition = undefined;
+            let options = {}
+
             if (nodeFocused){
                 this.enterNode({node : nodeFocused });
                 nodePosition = this.renderer.getNodeDisplayData(nodeFocused);
@@ -247,10 +249,13 @@ export default class SigmaJSComponent extends Component {
                 if (zoom.coordinates){
                     nodePosition = zoom.coordinates;
                 }
+                if (zoom.duration){
+                    options.duration = zoom.duration
+                }
 
                 nodePosition = {...nodePosition,ratio:zoom.factor}
             }
-            this.renderer.getCamera().animate(nodePosition,{duration:zoom.duration});
+            this.renderer.getCamera().animate(nodePosition,options);
         }
         // if (zoom){
         //     this.renderer.getCamera().animatedZoom(zoom)

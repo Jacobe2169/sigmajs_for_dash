@@ -11,7 +11,7 @@ SigmaJS for Dash is a component that bring SigmaJS network fast renderer to your
 **Available features :**
 
  * Highlight node neighbors by clicking it
- * Zoom on a node or specific coordinates
+ * Zoom on a node (or given coordinates) to emphasize part of your network right at the beginning
  * Node searching features
  * Works with networkx graph
 

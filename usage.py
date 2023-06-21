@@ -38,7 +38,7 @@ app.layout = html.Div(
         "adjustSizes": True,
         "linLogMode": True
       },
-      layoutNumberOfIteration=200,nodeFocused="1",zoom={"duration":3000,"factor":0.1,"coordinates":{"x":0.7,"y":0.5}}
+      layoutNumberOfIteration=200,nodeFocused="1"#,zoom={"duration":3000,"factor":0.1,"coordinates":{"x":0.7,"y":0.5}}
     ),
     SigmaJSComponent(
       id='graph_container2',
