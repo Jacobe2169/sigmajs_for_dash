@@ -46,6 +46,17 @@ Keyword arguments:
 
     `zoom` is a dict with keys:
 
+    - coordinates (dict; optional):
+        Zoom coordinates.
+
+        `coordinates` is a dict with keys:
+
+        - x (number; optional):
+            x coordinate to zoom.
+
+        - y (number; optional):
+            y coordinate to zoom.
+
     - duration (number; optional):
         Duration of the zoom animation.
 

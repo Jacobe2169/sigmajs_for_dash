@@ -235,17 +235,28 @@ export default class SigmaJSComponent extends Component {
             this.setSearchQuery("");
         });
 
-        if (nodeFocused){
+        if (nodeFocused || (zoom && zoom.coordinates)){
             // this.setHoveredNode({node : nodeFocused });
-            this.enterNode({node : nodeFocused });
-            const nodePosition = this.renderer.getNodeDisplayData(nodeFocused);
-                this.renderer.getCamera().animate(nodePosition, {
-                    duration: 500,
-                });
+            let nodePosition = undefined;
+            if (nodeFocused){
+                this.enterNode({node : nodeFocused });
+                nodePosition = this.renderer.getNodeDisplayData(nodeFocused);
+            }
+            
+            if (zoom){
+                if (zoom.coordinates){
+                    nodePosition = zoom.coordinates;
+                }
+
+                nodePosition = {...nodePosition,ratio:zoom.factor}
+            }
+            this.renderer.getCamera().animate(nodePosition,{duration:zoom.duration});
         }
-        if (zoom){
-            this.renderer.getCamera().animatedZoom(zoom)
-        }
+        // if (zoom){
+        //     this.renderer.getCamera().animatedZoom(zoom)
+        // }
+
+        
 
         
     }
@@ -348,7 +359,20 @@ SigmaJSComponent.propTypes = {
         /**
          * Zoom intensity
          */
-        factor:PropTypes.number
+        factor:PropTypes.number,
+        /**
+         * Zoom coordinates
+         */
+        coordinates:PropTypes.shape({
+            /**
+             * x coordinate to zoom
+             */
+            x:PropTypes.number,
+            /**
+             * y coordinate to zoom
+             */
+            y:PropTypes.number
+        })
     }),
 
 };

@@ -32,17 +32,13 @@ app.layout = html.Div(
     SigmaJSComponent(
       id='graph_container',
       graph_data=data,style={"height":"500px","width":"50%","float":"left"},
-      settings={
-        "minCameraRatio": 0.1,
-        "maxCameraRatio": 10,
-      },
       layoutSettings={
         "outboundAttractionDistribution": True,
         "barnesHutOptimize": True,
         "adjustSizes": True,
         "linLogMode": True
       },
-      layoutNumberOfIteration=200,nodeFocused="1",zoom={"duration":1000,"factor":10}
+      layoutNumberOfIteration=200,nodeFocused="1",zoom={"duration":3000,"factor":0.1,"coordinates":{"x":0.7,"y":0.5}}
     ),
     SigmaJSComponent(
       id='graph_container2',
@@ -57,7 +53,7 @@ app.layout = html.Div(
         "adjustSizes": True,
         "linLogMode": True
       },
-      layoutNumberOfIteration=200,
+      layoutNumberOfIteration=200,nodeFocused="0",zoom={"duration":1000,"factor":2}
     )
   ]
 )

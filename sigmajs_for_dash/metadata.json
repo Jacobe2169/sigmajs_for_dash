@@ -230,6 +230,23 @@
               "name": "number",
               "description": "Zoom intensity",
               "required": false
+            },
+            "coordinates": {
+              "name": "shape",
+              "value": {
+                "x": {
+                  "name": "number",
+                  "description": "x coordinate to zoom",
+                  "required": false
+                },
+                "y": {
+                  "name": "number",
+                  "description": "y coordinate to zoom",
+                  "required": false
+                }
+              },
+              "description": "Zoom coordinates",
+              "required": false
             }
           }
         },

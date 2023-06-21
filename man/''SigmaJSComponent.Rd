@@ -39,10 +39,14 @@ style=NULL, zoom=NULL)
 
 \item{style}{Named list. Inline Style}
 
-\item{zoom}{Lists containing elements 'duration', 'factor'.
+\item{zoom}{Lists containing elements 'duration', 'factor', 'coordinates'.
 those elements have the following types:
   - duration (numeric; optional): duration of the zoom animation
-  - factor (numeric; optional): zoom intensity. Zoom control}
+  - factor (numeric; optional): zoom intensity
+  - coordinates (optional): zoom coordinates. coordinates has the following type: lists containing elements 'x', 'y'.
+those elements have the following types:
+  - x (numeric; optional): x coordinate to zoom
+  - y (numeric; optional): y coordinate to zoom. Zoom control}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

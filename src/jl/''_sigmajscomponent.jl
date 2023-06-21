@@ -20,10 +20,14 @@ Keyword arguments:
 - `nodeFocused` (String | Real; optional): Focus on a specific node : show only node and its neighbors
 - `settings` (Dict; optional): Settings
 - `style` (Dict; optional): Inline Style
-- `zoom` (optional): Zoom control. zoom has the following type: lists containing elements 'duration', 'factor'.
+- `zoom` (optional): Zoom control. zoom has the following type: lists containing elements 'duration', 'factor', 'coordinates'.
 Those elements have the following types:
   - `duration` (Real; optional): Duration of the zoom animation
   - `factor` (Real; optional): Zoom intensity
+  - `coordinates` (optional): Zoom coordinates. coordinates has the following type: lists containing elements 'x', 'y'.
+Those elements have the following types:
+  - `x` (Real; optional): x coordinate to zoom
+  - `y` (Real; optional): y coordinate to zoom
 """
 function ''_sigmajscomponent(; kwargs...)
         available_props = Symbol[:id, :className, :graph_data, :label, :layout, :layoutNumberOfIteration, :layoutSettings, :nodeFocused, :settings, :style, :zoom]
